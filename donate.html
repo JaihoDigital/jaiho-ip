@@ -1,0 +1,653 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Support Us - What's My IP?</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        :root {
+            --primary-color: #4361ee;
+            --primary-light: #4895ef;
+            --secondary-color: #3f37c9;
+            --accent-color: #f72585;
+            --success-color: #4cc9f0;
+            --text-color: #2b2d42;
+            --text-light: #6c757d;
+            --bg-color: #f8f9fa;
+            --card-bg: #ffffff;
+            --header-bg: rgba(255, 255, 255, 0.95);
+            --shadow: 0 10px 30px rgba(0, 0, 0, 0.08);
+            --shadow-hover: 0 15px 35px rgba(0, 0, 0, 0.12);
+            --transition: all 0.3s ease;
+            --border-radius: 16px;
+            --gradient: linear-gradient(135deg, var(--primary-color) 0%, var(--secondary-color) 100%);
+        }
+
+        .dark-mode {
+            --primary-color: #4cc9f0;
+            --primary-light: #4895ef;
+            --secondary-color: #560bad;
+            --accent-color: #f72585;
+            --text-color: #f8f9fa;
+            --text-light: #adb5bd;
+            --bg-color: #121212;
+            --card-bg: #1e1e1e;
+            --header-bg: rgba(30, 30, 30, 0.95);
+            --shadow: 0 10px 30px rgba(0, 0, 0, 0.3);
+            --shadow-hover: 0 15px 35px rgba(0, 0, 0, 0.4);
+            --gradient: linear-gradient(135deg, var(--primary-color) 0%, var(--secondary-color) 100%);
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background-color: var(--bg-color);
+            color: var(--text-color);
+            line-height: 1.6;
+            transition: var(--transition);
+            min-height: 100vh;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            padding: 0;
+            background-image: 
+                radial-gradient(circle at 15% 50%, rgba(72, 149, 239, 0.03) 0%, transparent 25%),
+                radial-gradient(circle at 85% 30%, rgba(67, 97, 238, 0.03) 0%, transparent 25%);
+        }
+
+        .dark-mode body {
+            background-image: 
+                radial-gradient(circle at 15% 50%, rgba(76, 201, 240, 0.05) 0%, transparent 25%),
+                radial-gradient(circle at 85% 30%, rgba(86, 11, 173, 0.05) 0%, transparent 25%);
+        }
+
+        .container {
+            width: 100%;
+            max-width: 900px;
+            margin: 0 auto;
+            padding: 0 1.5rem;
+        }
+
+        header {
+            background: var(--header-bg);
+            backdrop-filter: blur(10px);
+            -webkit-backdrop-filter: blur(10px);
+            position: sticky;
+            top: 0;
+            width: 100%;
+            z-index: 100;
+            padding: 1.2rem 0;
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.05);
+            margin-bottom: 2rem;
+        }
+
+        .header-content {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            flex-wrap: wrap;
+            gap: 1rem;
+        }
+
+        .logo {
+            display: flex;
+            align-items: center;
+            gap: 0.75rem;
+        }
+
+        .logo-icon {
+            font-size: 1.8rem;
+            color: var(--primary-color);
+        }
+
+        h1 {
+            font-size: 1.8rem;
+            font-weight: 700;
+            background: var(--gradient);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+
+        .subtitle {
+            font-size: 1rem;
+            color: var(--text-light);
+            margin-top: 0.25rem;
+        }
+
+        .nav-container {
+            display: flex;
+            align-items: center;
+            gap: 1rem;
+        }
+
+        .nav-links {
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+            background: rgba(67, 97, 238, 0.05);
+            padding: 0.5rem;
+            border-radius: 50px;
+            border: 1px solid rgba(67, 97, 238, 0.1);
+        }
+
+        .dark-mode .nav-links {
+            background: rgba(76, 201, 240, 0.08);
+            border: 1px solid rgba(76, 201, 240, 0.15);
+        }
+
+        .nav-link {
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+            padding: 0.6rem 1rem;
+            border-radius: 25px;
+            color: var(--text-color);
+            text-decoration: none;
+            font-weight: 500;
+            font-size: 0.9rem;
+            transition: var(--transition);
+        }
+
+        .nav-link:hover {
+            background: var(--gradient);
+            color: white;
+            transform: translateY(-2px);
+            box-shadow: 0 4px 12px rgba(67, 97, 238, 0.3);
+        }
+
+        .nav-link.active {
+            background: var(--gradient);
+            color: white;
+        }
+
+        .theme-toggle {
+            background: var(--card-bg);
+            border: none;
+            width: 48px;
+            height: 48px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            cursor: pointer;
+            box-shadow: var(--shadow);
+            transition: var(--transition);
+            font-size: 1.2rem;
+            color: var(--text-color);
+        }
+
+        .theme-toggle:hover {
+            transform: translateY(-2px);
+            box-shadow: var(--shadow-hover);
+        }
+
+        .page-header {
+            text-align: center;
+            margin-bottom: 3rem;
+        }
+
+        .page-title {
+            font-size: 3rem;
+            font-weight: 800;
+            background: var(--gradient);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+            margin-bottom: 1rem;
+        }
+
+        .page-description {
+            font-size: 1.2rem;
+            color: var(--text-light);
+            max-width: 600px;
+            margin: 0 auto;
+        }
+
+        .back-button {
+            display: inline-flex;
+            align-items: center;
+            gap: 0.5rem;
+            background: var(--gradient);
+            color: white;
+            text-decoration: none;
+            padding: 0.9rem 1.5rem;
+            border-radius: 50px;
+            font-weight: 600;
+            transition: var(--transition);
+            box-shadow: 0 4px 15px rgba(67, 97, 238, 0.3);
+            margin-bottom: 2rem;
+        }
+
+        .back-button:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 8px 20px rgba(67, 97, 238, 0.4);
+            color: white;
+        }
+
+        .donation-card {
+            background: var(--card-bg);
+            border-radius: var(--border-radius);
+            padding: 3rem;
+            box-shadow: var(--shadow);
+            margin-bottom: 2rem;
+            position: relative;
+            overflow: hidden;
+            transition: var(--transition);
+            text-align: center;
+        }
+
+        .donation-card:hover {
+            box-shadow: var(--shadow-hover);
+            transform: translateY(-5px);
+        }
+
+        .donation-card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 5px;
+            background: var(--gradient);
+        }
+
+        .section-title {
+            font-size: 1.8rem;
+            font-weight: 700;
+            color: var(--text-color);
+            margin-bottom: 1.5rem;
+            display: flex;
+            align-items: center;
+            gap: 0.75rem;
+            justify-content: center;
+        }
+
+        .section-title i {
+            color: var(--primary-color);
+        }
+
+        .qr-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 2rem;
+            margin: 2rem 0;
+        }
+
+        .qr-option {
+            background: rgba(67, 97, 238, 0.05);
+            border: 1px solid rgba(67, 97, 238, 0.1);
+            border-radius: var(--border-radius);
+            padding: 2rem;
+            text-align: center;
+            transition: var(--transition);
+        }
+
+        .dark-mode .qr-option {
+            background: rgba(76, 201, 240, 0.08);
+            border: 1px solid rgba(76, 201, 240, 0.15);
+        }
+
+        .qr-option:hover {
+            transform: translateY(-5px);
+            box-shadow: var(--shadow);
+        }
+
+        .qr-title {
+            font-size: 1.3rem;
+            font-weight: 600;
+            color: var(--text-color);
+            margin-bottom: 1.5rem;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 0.5rem;
+        }
+
+        .qr-container {
+            width: 220px;
+            height: 220px;
+            background: white;
+            border-radius: 12px;
+            margin: 0 auto 1rem;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+            border: 3px solid #f0f0f0;
+            overflow: hidden;
+        }
+
+        .qr-image {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+
+        .qr-placeholder {
+            color: #888;
+            text-align: center;
+            font-size: 0.9rem;
+            padding: 1rem;
+        }
+
+        .qr-description {
+            color: var(--text-light);
+            font-size: 0.95rem;
+            line-height: 1.5;
+        }
+
+        .coffee-button {
+            display: inline-flex;
+            align-items: center;
+            gap: 0.5rem;
+            background: #FF813F;
+            color: white;
+            text-decoration: none;
+            padding: 1rem 2rem;
+            border-radius: 50px;
+            font-weight: 600;
+            transition: var(--transition);
+            box-shadow: 0 4px 15px rgba(255, 129, 63, 0.3);
+            margin: 1rem;
+        }
+
+        .coffee-button:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 8px 20px rgba(255, 129, 63, 0.4);
+            color: white;
+        }
+
+        .appreciation-text {
+            background: rgba(76, 201, 240, 0.05);
+            border-radius: var(--border-radius);
+            padding: 2rem;
+            margin: 2rem 0;
+            text-align: center;
+        }
+
+        .dark-mode .appreciation-text {
+            background: rgba(76, 201, 240, 0.08);
+        }
+
+        .appreciation-text h3 {
+            color: var(--text-color);
+            margin-bottom: 1rem;
+            font-size: 1.5rem;
+        }
+
+        .appreciation-text p {
+            color: var(--text-light);
+            line-height: 1.7;
+            max-width: 500px;
+            margin: 0 auto;
+        }
+
+        footer {
+            margin-top: auto;
+            text-align: center;
+            padding: 2rem 0;
+            width: 100%;
+            color: var(--text-light);
+            font-size: 0.9rem;
+        }
+
+        .footer-content {
+            display: flex;
+            flex-direction: column;
+            gap: 1rem;
+        }
+
+        .footer-links {
+            display: flex;
+            justify-content: center;
+            gap: 1.5rem;
+            flex-wrap: wrap;
+        }
+
+        .footer-links a {
+            color: var(--text-light);
+            text-decoration: none;
+            transition: var(--transition);
+        }
+
+        .footer-links a:hover {
+            color: var(--primary-color);
+        }
+
+        @media (max-width: 768px) {
+            .nav-links {
+                display: none;
+            }
+            
+            .page-title {
+                font-size: 2.2rem;
+            }
+            
+            .donation-card {
+                padding: 2rem;
+            }
+            
+            .qr-grid {
+                grid-template-columns: 1fr;
+            }
+            
+            .qr-container {
+                width: 200px;
+                height: 200px;
+            }
+        }
+
+        .fade-in {
+            animation: fadeIn 0.5s ease-in-out;
+        }
+
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(10px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <div class="container header-content">
+            <div class="logo">
+                <div class="logo-icon"><i class="fas fa-network-wired"></i></div>
+                <div>
+                    <h1>What's My IP?</h1>
+                    <p class="subtitle">Support Our Service</p>
+                </div>
+            </div>
+            
+            <div class="nav-container">
+                <nav class="nav-links">
+                    <a href="index.html" class="nav-link">
+                        <i class="fas fa-home"></i> Home
+                    </a>
+                    <a href="faq.html" class="nav-link">
+                        <i class="fas fa-question-circle"></i> FAQ
+                    </a>
+                    <a href="privacy.html" class="nav-link">
+                        <i class="fas fa-shield-alt"></i> Privacy
+                    </a>
+                    <a href="api_docs.html" class="nav-link">
+                        <i class="fas fa-code"></i> API
+                    </a>
+                    <a href="donate.html" class="nav-link active">
+                        <i class="fas fa-heart"></i> Donate
+                    </a>
+                </nav>
+                
+                <button class="theme-toggle" id="themeToggle">
+                    <i class="fas fa-moon"></i>
+                </button>
+            </div>
+        </div>
+    </header>
+    
+    <div class="container">
+        <main>
+            <div class="page-header fade-in">
+                <h1 class="page-title">Support Our Service</h1>
+                <p class="page-description">Help keep What's My IP? free and ad-free for everyone</p>
+            </div>
+
+            <a href="index.html" class="back-button">
+                <i class="fas fa-arrow-left"></i> Back to Home
+            </a>
+
+            <div class="donation-card fade-in">
+                <h2 class="section-title">
+                    <i class="fas fa-qrcode"></i>
+                    Scan to Donate
+                </h2>
+                
+                <div class="qr-grid">
+                    <!-- UPI Payment -->
+                    <div class="qr-option">
+                        <h3 class="qr-title">
+                            <i class="fas fa-mobile-alt" style="color: #28a745;"></i>
+                            UPI Payment
+                        </h3>
+                        <div class="qr-container">
+                            <!-- Replace with your UPI QR code image -->
+                            <img src="images/upi_qr.png" alt="UPI QR Code" class="qr-image">
+                            <!-- If no image yet, use placeholder -->
+                            <!-- <div class="qr-placeholder">Place your UPI QR code image here</div> -->
+                        </div>
+                        <div class="qr-description">
+                            Scan with any UPI app like GPay, PhonePe, Paytm
+                        </div>
+                    </div>
+
+                    <!-- PayPal Payment -->
+                    <div class="qr-option">
+                        <h3 class="qr-title">
+                            <i class="fab fa-paypal" style="color: #0070ba;"></i>
+                            PayPal
+                        </h3>
+                        <div class="qr-container">
+                            <!-- Replace with your PayPal QR code image -->
+                            <img src="your-paypal-qr.png" alt="PayPal QR Code" class="qr-image">
+                            <!-- If no image yet, use placeholder -->
+                            <!-- <div class="qr-placeholder">Place your PayPal QR code image here</div> -->
+                        </div>
+                        <div class="qr-description">
+                            Scan with PayPal app or camera for international donations
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Buy Me Coffee Button as alternative -->
+                <div style="margin-top: 2rem; padding-top: 2rem; border-top: 1px solid rgba(0,0,0,0.1);">
+                    <p style="color: var(--text-light); margin-bottom: 1rem;">
+                        Or use our coffee link:
+                    </p>
+                    <a href="https://www.buymeacoffee.com/yourusername" class="coffee-button" target="_blank">
+                        <i class="fas fa-coffee"></i> Buy Me a Coffee
+                    </a>
+                </div>
+            </div>
+
+            <div class="appreciation-text fade-in">
+                <h3><i class="fas fa-heart"></i> Thank You!</h3>
+                <p>Your support helps us keep this service running smoothly, maintain our servers, and continue providing free IP detection services to users worldwide. Every donation, big or small, makes a difference!</p>
+            </div>
+        </main>
+    </div>
+    
+    <footer>
+        <div class="container footer-content">
+            <div class="footer-links">
+                <a href="faq.html"><i class="fas fa-question-circle"></i> FAQ</a>
+                <a href="privacy.html"><i class="fas fa-shield-alt"></i> Privacy</a>
+                <a href="contact.html"><i class="fas fa-envelope"></i> Contact</a>
+                <a href="https://github.com/jaihodigital" target="_blank"><i class="fab fa-github"></i> GitHub</a>
+            </div>
+            <p>What's My IP? &copy; 2025 | A simple tool to check your public IP address | Developed by 
+  <a 
+    href="https://jaihotechserve.onrender.com" 
+    target="_blank" 
+    style="
+      text-decoration: none;
+      display: inline-flex;
+      align-items: center;
+      gap: 5px;
+    "
+  >
+    <span style="
+      background-image: linear-gradient(to right, #6A82FB, #FC5C7D);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      font-weight: bold;
+      transition: opacity 0.3s ease;
+    ">
+      Jaiho TechServe
+    </span>
+    <span style="
+      color: #FC5C7D;
+      font-size: 1.2rem;
+      transition: transform 0.3s ease;
+    ">
+      ↗
+    </span>
+  </a></p>
+        </div>
+    </footer>
+
+    <script>
+        // Theme toggle functionality
+        const themeToggle = document.getElementById('themeToggle');
+        
+        function toggleTheme() {
+            document.body.classList.toggle('dark-mode');
+            
+            if (document.body.classList.contains('dark-mode')) {
+                themeToggle.innerHTML = '<i class="fas fa-sun"></i>';
+                localStorage.setItem('theme', 'dark');
+            } else {
+                themeToggle.innerHTML = '<i class="fas fa-moon"></i>';
+                localStorage.setItem('theme', 'light');
+            }
+        }
+
+        function initTheme() {
+            const savedTheme = localStorage.getItem('theme');
+            
+            if (savedTheme === 'dark') {
+                document.body.classList.add('dark-mode');
+                themeToggle.innerHTML = '<i class="fas fa-sun"></i>';
+            } else {
+                themeToggle.innerHTML = '<i class="fas fa-moon"></i>';
+            }
+        }
+
+        // Event listeners
+        themeToggle.addEventListener('click', toggleTheme);
+
+        // Initialize
+        document.addEventListener('DOMContentLoaded', () => {
+            initTheme();
+            
+            // Add fade-in animation to elements as they come into view
+            const observer = new IntersectionObserver((entries) => {
+                entries.forEach(entry => {
+                    if (entry.isIntersecting) {
+                        entry.target.classList.add('fade-in');
+                    }
+                });
+            }, { threshold: 0.1 });
+            
+            document.querySelectorAll('.donation-card, .appreciation-text').forEach(section => {
+                observer.observe(section);
+            });
+        });
+    </script>
+</body>
+</html>
