@@ -37,7 +37,7 @@ Allow: *.svg
 Allow: *.ico
 
 # Sitemap location
-Sitemap: https://jaiho-ip.vercel.com/sitemap.xml
+Sitemap: https://jaiho-ip.vercel.app/sitemap.xml
 
 # Crawl delay (optional - adjust as needed)
 Crawl-delay: 1

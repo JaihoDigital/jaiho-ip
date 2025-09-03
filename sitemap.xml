@@ -6,7 +6,7 @@
 
     <!-- Homepage - Highest Priority -->
     <url>
-        <loc>https://jaiho-ip.vercel.com/</loc>
+        <loc>https://jaiho-ip.vercel.app/</loc>
         <lastmod>2025-09-03</lastmod>
         <changefreq>daily</changefreq>
         <priority>1.0</priority>
@@ -14,7 +14,7 @@
 
     <!-- Main Pages -->
     <url>
-        <loc>https://jaiho-ip.vercel.com/index.html</loc>
+        <loc>https://jaiho-ip.vercel.app/index.html</loc>
         <lastmod>2025-09-03</lastmod>
         <changefreq>daily</changefreq>
         <priority>1.0</priority>
@@ -22,7 +22,7 @@
 
     <!-- FAQ Page -->
     <url>
-        <loc>https://jaiho-ip.vercel.com/faq.html</loc>
+        <loc>https://jaiho-ip.vercel.app/faq.html</loc>
         <lastmod>2025-09-03</lastmod>
         <changefreq>weekly</changefreq>
         <priority>0.8</priority>
@@ -30,7 +30,7 @@
 
     <!-- API Documentation -->
     <url>
-        <loc>https://jaiho-ip.vercel.com/api_docs.html</loc>
+        <loc>https://jaiho-ip.vercel.app/api_docs.html</loc>
         <lastmod>2025-09-03</lastmod>
         <changefreq>monthly</changefreq>
         <priority>0.8</priority>
@@ -38,7 +38,7 @@
 
     <!-- Privacy Policy -->
     <url>
-        <loc>https://jaiho-ip.vercel.com/privacy.html</loc>
+        <loc>https://jaiho-ip.vercel.app/privacy.html</loc>
         <lastmod>2025-09-03</lastmod>
         <changefreq>monthly</changefreq>
         <priority>0.6</priority>
@@ -46,7 +46,7 @@
 
     <!-- Contact Page -->
     <url>
-        <loc>https://jaiho-ip.vercel.com/contact.html</loc>
+        <loc>https://jaiho-ip.vercel.app/contact.html</loc>
         <lastmod>2025-09-03</lastmod>
         <changefreq>monthly</changefreq>
         <priority>0.7</priority>
@@ -54,7 +54,7 @@
 
     <!-- Donate Page -->
     <url>
-        <loc>https://jaiho-ip.vercel.com/donate.html</loc>
+        <loc>https://jaiho-ip.vercel.app/donate.html</loc>
         <lastmod>2025-09-03</lastmod>
         <changefreq>monthly</changefreq>
         <priority>0.5</priority>
@@ -62,7 +62,7 @@
 
     <!-- API Endpoints (if you want them indexed) -->
     <url>
-        <loc>https://jaiho-ip.vercel.com/api/ip</loc>
+        <loc>https://jaiho-ip.vercel.app/api/ip</loc>
         <lastmod>2025-09-03</lastmod>
         <changefreq>daily</changefreq>
         <priority>0.7</priority>
