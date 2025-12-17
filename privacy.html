@@ -4,595 +4,196 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Privacy Policy - What's My IP?</title>
+    <meta name="description" content="Privacy Policy for Jaiho TechServe's IP detection tool.">
+    <link rel="icon" type="image/x-icon" href="/favicon.ico">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <style>
+        /* Reuse Variables from Index */
         :root {
             --primary-color: #4361ee;
             --primary-light: #4895ef;
             --secondary-color: #3f37c9;
-            --accent-color: #f72585;
-            --success-color: #4cc9f0;
             --text-color: #2b2d42;
             --text-light: #6c757d;
             --bg-color: #f8f9fa;
             --card-bg: #ffffff;
             --header-bg: rgba(255, 255, 255, 0.95);
             --shadow: 0 10px 30px rgba(0, 0, 0, 0.08);
-            --shadow-hover: 0 15px 35px rgba(0, 0, 0, 0.12);
-            --transition: all 0.3s ease;
             --border-radius: 16px;
             --gradient: linear-gradient(135deg, var(--primary-color) 0%, var(--secondary-color) 100%);
         }
-
         .dark-mode {
             --primary-color: #4cc9f0;
             --primary-light: #4895ef;
             --secondary-color: #560bad;
-            --accent-color: #f72585;
             --text-color: #f8f9fa;
             --text-light: #adb5bd;
             --bg-color: #121212;
             --card-bg: #1e1e1e;
             --header-bg: rgba(30, 30, 30, 0.95);
             --shadow: 0 10px 30px rgba(0, 0, 0, 0.3);
-            --shadow-hover: 0 15px 35px rgba(0, 0, 0, 0.4);
-            --gradient: linear-gradient(135deg, var(--primary-color) 0%, var(--secondary-color) 100%);
         }
-
-        * {
-            margin: 0;
-            padding: 0;
-            box-sizing: border-box;
-        }
-
+        * { margin: 0; padding: 0; box-sizing: border-box; }
         body {
             font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-            background-color: var(--bg-color);
-            color: var(--text-color);
-            line-height: 1.6;
-            transition: var(--transition);
-            min-height: 100vh;
-            display: flex;
-            flex-direction: column;
-            align-items: center;
-            padding: 0;
-            background-image: 
-                radial-gradient(circle at 15% 50%, rgba(72, 149, 239, 0.03) 0%, transparent 25%),
-                radial-gradient(circle at 85% 30%, rgba(67, 97, 238, 0.03) 0%, transparent 25%);
+            background-color: var(--bg-color); color: var(--text-color);
+            line-height: 1.6; min-height: 100vh; display: flex; flex-direction: column;
         }
-
-        .dark-mode body {
-            background-image: 
-                radial-gradient(circle at 15% 50%, rgba(76, 201, 240, 0.05) 0%, transparent 25%),
-                radial-gradient(circle at 85% 30%, rgba(86, 11, 173, 0.05) 0%, transparent 25%);
-        }
-
-        .container {
-            width: 100%;
-            max-width: 900px;
-            margin: 0 auto;
-            padding: 0 1.5rem;
-        }
-
+        .container { width: 100%; max-width: 900px; margin: 0 auto; padding: 0 1.5rem; }
+        
         header {
-            background: var(--header-bg);
-            backdrop-filter: blur(10px);
-            -webkit-backdrop-filter: blur(10px);
-            position: sticky;
-            top: 0;
-            width: 100%;
-            z-index: 100;
-            padding: 1.2rem 0;
-            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.05);
-            margin-bottom: 2rem;
+            background: var(--header-bg); backdrop-filter: blur(10px);
+            position: sticky; top: 0; width: 100%; z-index: 100;
+            padding: 1.2rem 0; box-shadow: 0 2px 10px rgba(0, 0, 0, 0.05); margin-bottom: 2rem;
         }
+        .header-content { display: flex; justify-content: space-between; align-items: center; }
+        .logo { display: flex; align-items: center; gap: 0.75rem; }
+        .logo-icon { font-size: 1.8rem; color: var(--primary-color); }
+        h1 { font-size: 1.8rem; font-weight: 700; background: var(--gradient); -webkit-background-clip: text; -webkit-text-fill-color: transparent; }
+        .subtitle { font-size: 1rem; color: var(--text-light); }
 
-        .header-content {
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-        }
-
-        .logo {
-            display: flex;
-            align-items: center;
-            gap: 0.75rem;
-        }
-
-        .logo-icon {
-            font-size: 1.8rem;
-            color: var(--primary-color);
-        }
-
-        h1 {
-            font-size: 1.8rem;
-            font-weight: 700;
-            background: var(--gradient);
-            -webkit-background-clip: text;
-            -webkit-text-fill-color: transparent;
-            background-clip: text;
-        }
-
-        .subtitle {
-            font-size: 1rem;
-            color: var(--text-light);
-            margin-top: 0.25rem;
-        }
-
-        .nav-links {
-            display: flex;
-            gap: 1rem;
-            align-items: center;
-        }
-
-        .nav-links a {
-            color: var(--text-color);
-            text-decoration: none;
-            padding: 0.5rem 1rem;
-            border-radius: 8px;
-            transition: var(--transition);
-            font-weight: 500;
-        }
-
-        .nav-links a:hover {
-            background: rgba(67, 97, 238, 0.1);
-            color: var(--primary-color);
-        }
-
-        .theme-toggle {
-            background: var(--card-bg);
-            border: none;
-            width: 48px;
-            height: 48px;
-            border-radius: 50%;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            cursor: pointer;
-            box-shadow: var(--shadow);
-            transition: var(--transition);
-            font-size: 1.2rem;
-            color: var(--text-color);
-        }
-
-        .theme-toggle:hover {
-            transform: translateY(-2px);
-            box-shadow: var(--shadow-hover);
-        }
-
-        .page-header {
-            text-align: center;
-            margin-bottom: 3rem;
-        }
-
-        .page-title {
-            font-size: 3rem;
-            font-weight: 800;
-            background: var(--gradient);
-            -webkit-background-clip: text;
-            -webkit-text-fill-color: transparent;
-            background-clip: text;
-            margin-bottom: 1rem;
-        }
-
-        .page-description {
-            font-size: 1.2rem;
-            color: var(--text-light);
-            max-width: 600px;
-            margin: 0 auto;
-        }
+        .nav-links { display: flex; gap: 0.5rem; background: rgba(67, 97, 238, 0.05); padding: 0.5rem; border-radius: 50px; border: 1px solid rgba(67, 97, 238, 0.1); }
+        .nav-link { display: flex; align-items: center; gap: 0.5rem; padding: 0.6rem 1rem; border-radius: 25px; color: var(--text-color); text-decoration: none; font-weight: 500; font-size: 0.9rem; transition: 0.3s; }
+        .nav-link:hover, .nav-link.active { background: var(--gradient); color: white; }
+        .theme-toggle { background: var(--card-bg); border: none; width: 40px; height: 40px; border-radius: 50%; display: flex; align-items: center; justify-content: center; cursor: pointer; box-shadow: var(--shadow); margin-left: 1rem; color: var(--text-color); }
 
         .content-card {
-            background: var(--card-bg);
-            border-radius: var(--border-radius);
-            padding: 3rem;
-            box-shadow: var(--shadow);
-            margin-bottom: 2rem;
-            position: relative;
-            overflow: hidden;
+            background: var(--card-bg); padding: 3rem; border-radius: var(--border-radius); box-shadow: var(--shadow); margin-bottom: 3rem;
         }
+        h2 { color: var(--primary-color); margin-bottom: 1rem; margin-top: 2rem; font-size: 1.4rem; }
+        h2:first-child { margin-top: 0; }
+        p, ul { margin-bottom: 1rem; color: var(--text-light); }
+        ul { padding-left: 1.5rem; }
+        li { margin-bottom: 0.5rem; }
+        
+        footer { margin-top: auto; text-align: center; padding: 2rem 0; color: var(--text-light); font-size: 0.9rem; }
+        @media (max-width: 768px) { .nav-links { display: none; } .content-card { padding: 1.5rem; } }
+        /* Hamburger button */
+.hamburger {
+    display: none;
+    background: var(--card-bg);
+    border: none;
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+    cursor: pointer;
+    box-shadow: var(--shadow);
+    color: var(--text-color);
+}
 
-        .content-card::before {
-            content: '';
-            position: absolute;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 5px;
-            background: var(--gradient);
-        }
+/* Mobile only */
+@media (max-width: 768px) {
+    .hamburger {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+    }
 
-        .section-title {
-            font-size: 1.8rem;
-            font-weight: 700;
-            color: var(--text-color);
-            margin-bottom: 1.5rem;
-            display: flex;
-            align-items: center;
-            gap: 0.75rem;
-        }
+    .nav-links {
+        display: none;
+        position: absolute;
+        top: 80px;
+        right: 20px;
+        background: var(--card-bg);
+        flex-direction: column;
+        padding: 1rem;
+        border-radius: 16px;
+        box-shadow: var(--shadow);
+        width: 200px;
+    }
 
-        .section-title i {
-            color: var(--primary-color);
-        }
+    .nav-links.show {
+        display: flex;
+    }
+}
 
-        .content-section {
-            margin-bottom: 2.5rem;
-        }
-
-        .content-section h3 {
-            font-size: 1.3rem;
-            font-weight: 600;
-            color: var(--text-color);
-            margin-bottom: 1rem;
-            border-left: 4px solid var(--primary-color);
-            padding-left: 1rem;
-        }
-
-        .content-section p {
-            margin-bottom: 1rem;
-            color: var(--text-light);
-            line-height: 1.7;
-        }
-
-        .content-section ul {
-            margin: 1rem 0;
-            padding-left: 2rem;
-            color: var(--text-light);
-        }
-
-        .content-section li {
-            margin-bottom: 0.5rem;
-        }
-
-        .highlight-box {
-            background: rgba(67, 97, 238, 0.08);
-            border-left: 4px solid var(--primary-color);
-            padding: 1.5rem;
-            border-radius: 8px;
-            margin: 1.5rem 0;
-        }
-
-        .dark-mode .highlight-box {
-            background: rgba(76, 201, 240, 0.1);
-        }
-
-        .back-button {
-            display: inline-flex;
-            align-items: center;
-            gap: 0.5rem;
-            background: var(--gradient);
-            color: white;
-            text-decoration: none;
-            padding: 0.9rem 1.5rem;
-            border-radius: 50px;
-            font-weight: 600;
-            transition: var(--transition);
-            box-shadow: 0 4px 15px rgba(67, 97, 238, 0.3);
-            margin-bottom: 2rem;
-        }
-
-        .back-button:hover {
-            transform: translateY(-3px);
-            box-shadow: 0 8px 20px rgba(67, 97, 238, 0.4);
-            color: white;
-        }
-
-        .last-updated {
-            background: rgba(108, 117, 125, 0.1);
-            padding: 1rem;
-            border-radius: 8px;
-            text-align: center;
-            margin-bottom: 2rem;
-            font-style: italic;
-            color: var(--text-light);
-        }
-
-        footer {
-            margin-top: auto;
-            text-align: center;
-            padding: 2rem 0;
-            width: 100%;
-            color: var(--text-light);
-            font-size: 0.9rem;
-        }
-
-        .footer-content {
-            display: flex;
-            flex-direction: column;
-            gap: 1rem;
-        }
-
-        .footer-links {
-            display: flex;
-            justify-content: center;
-            gap: 1.5rem;
-            flex-wrap: wrap;
-        }
-
-        .footer-links a {
-            color: var(--text-light);
-            text-decoration: none;
-            transition: var(--transition);
-        }
-
-        .footer-links a:hover {
-            color: var(--primary-color);
-        }
-
-        @media (max-width: 768px) {
-            .nav-links {
-                display: none;
-            }
-            
-            .page-title {
-                font-size: 2.2rem;
-            }
-            
-            .content-card {
-                padding: 2rem;
-            }
-        }
-
-        .fade-in {
-            animation: fadeIn 0.5s ease-in-out;
-        }
-
-        @keyframes fadeIn {
-            from { opacity: 0; transform: translateY(10px); }
-            to { opacity: 1; transform: translateY(0); }
-        }
     </style>
 </head>
 <body>
     <header>
         <div class="container header-content">
             <div class="logo">
-                <div class="logo-icon"><i class="fas fa-network-wired"></i></div>
+                <div class="logo-icon"><i class="fas fa-shield-alt"></i></div>
                 <div>
                     <h1>What's My IP?</h1>
                     <p class="subtitle">Privacy Policy</p>
                 </div>
             </div>
-            <div class="nav-links">
-                <a href="index.html"><i class="fas fa-home"></i> Home</a>
-                <a href="faq.html"><i class="fas fa-question-circle"></i> FAQ</a>
-                <a href="api_docs.html"><i class="fas fa-code"></i> API</a>
+            <div style="display: flex; align-items: center;">
+                <nav class="nav-links">
+                    <a href="index.html" class="nav-link"><i class="fas fa-home"></i> Home</a>
+                    <a href="faq.html" class="nav-link"><i class="fas fa-question-circle"></i> FAQ</a>
+                    <a href="privacy.html" class="nav-link active"><i class="fas fa-shield-alt"></i> Privacy</a>
+                    <a href="api_docs.html" class="nav-link"><i class="fas fa-code"></i> API</a>
+                    <a href="contact.html" class="nav-link"><i class="fas fa-envelope"></i> Contact</a>
+                </nav>
+                <button class="hamburger" id="hamburger">
+                    <i class="fas fa-bars"></i>
+                </button>
+
+                <button class="theme-toggle" id="themeToggle"><i class="fas fa-moon"></i></button>
             </div>
-            <button class="theme-toggle" id="themeToggle">
-                <i class="fas fa-moon"></i>
-            </button>
         </div>
     </header>
-    
+
     <div class="container">
-        <main>
-            <div class="page-header fade-in">
-                <h1 class="page-title">Privacy Policy</h1>
-                <p class="page-description">How we handle your data and protect your privacy</p>
-            </div>
+        <main class="content-card">
+            <h2>Introduction</h2>
+            <p>At <strong>Jaiho TechServe</strong> (a subsidiary of <strong>Jaiho Digital</strong>), we take your privacy seriously. This Privacy Policy explains how we handle your data when you use the "What's My IP?" tool and API.</p>
 
-            <a href="index.html" class="back-button">
-                <i class="fas fa-arrow-left"></i> Back to Home
-            </a>
+            <h2>Information We Collect</h2>
+            <p>We believe in data minimization. When you visit our website:</p>
+            <ul>
+                <li><strong>IP Address:</strong> Your IP address is processed momentarily to display it to you. We do not store this in a database or sell it to third parties.</li>
+                <li><strong>Browser Information:</strong> We detect your browser and operating system type to display it on your screen. This happens locally or via standard HTTP headers.</li>
+            </ul>
 
-            <div class="last-updated fade-in">
-                <strong>Last updated:</strong> September 2, 2025
-            </div>
+            <h2>Cookies & Local Storage</h2>
+            <p>We use standard web technologies to improve your experience:</p>
+            <ul>
+                <li><strong>Local Storage:</strong> We use your browser's local storage to remember your preferred theme (Dark Mode or Light Mode).</li>
+                <li><strong>No Tracking Cookies:</strong> We do not use invasive tracking cookies or third-party advertising pixels.</li>
+            </ul>
 
-            <div class="content-card fade-in">
-                <div class="section-title">
-                    <i class="fas fa-shield-alt"></i>
-                    Our Commitment to Privacy
-                </div>
-                
-                <div class="highlight-box">
-                    <p><strong>Summary:</strong> We collect minimal data necessary to provide our IP detection service. We do not store your personal information, create user profiles, or sell data to third parties. Your privacy is our priority.</p>
-                </div>
+            <h2>API Usage</h2>
+            <p>If you use our API, we may momentarily process your request to return the data. We do not maintain a permanent log of API requests associated with specific users.</p>
 
-                <div class="content-section">
-                    <h3>Information We Collect</h3>
-                    <p>When you use What's My IP?, we automatically collect the following information:</p>
-                    <ul>
-                        <li><strong>IP Address:</strong> Your public IP address (IPv4 and/or IPv6)</li>
-                        <li><strong>Location Data:</strong> Approximate geographic location based on IP geolocation</li>
-                        <li><strong>Connection Information:</strong> Internet Service Provider (ISP) and network details</li>
-                        <li><strong>Browser Information:</strong> User agent string, browser type, and operating system</li>
-                        <li><strong>Technical Data:</strong> Timestamp of visit, request headers, and response codes</li>
-                    </ul>
-                </div>
+            <h2>Changes to This Policy</h2>
+            <p>We may update this policy from time to time. Any changes will be posted on this page.</p>
 
-                <div class="content-section">
-                    <h3>How We Use Your Information</h3>
-                    <p>We use the collected information solely for:</p>
-                    <ul>
-                        <li>Displaying your IP address and connection details</li>
-                        <li>Providing geolocation services</li>
-                        <li>API functionality for developers</li>
-                        <li>Security monitoring and abuse prevention</li>
-                        <li>Service performance optimization</li>
-                        <li>Generating anonymous usage statistics</li>
-                    </ul>
-                </div>
-
-                <div class="content-section">
-                    <h3>Data Retention</h3>
-                    <p>We follow minimal data retention practices:</p>
-                    <ul>
-                        <li><strong>IP Addresses:</strong> Not permanently stored; only kept in temporary server logs</li>
-                        <li><strong>Server Logs:</strong> Maintained for 30 days for security and performance monitoring</li>
-                        <li><strong>Analytics Data:</strong> Aggregated, anonymized data may be retained longer for service improvement</li>
-                        <li><strong>API Usage:</strong> Rate limiting data is cleared every 24 hours</li>
-                    </ul>
-                </div>
-
-                <div class="content-section">
-                    <h3>Data Sharing</h3>
-                    <p>We do not sell, trade, or rent your personal information. Limited data sharing occurs only in these situations:</p>
-                    <ul>
-                        <li><strong>Legal Requirements:</strong> When required by law enforcement or legal proceedings</li>
-                        <li><strong>Service Providers:</strong> Anonymous data with hosting and security providers for operational purposes</li>
-                        <li><strong>Security Issues:</strong> When necessary to investigate abuse or security threats</li>
-                    </ul>
-                </div>
-
-                <div class="content-section">
-                    <h3>Third-Party Services</h3>
-                    <p>Our service may use these third-party components:</p>
-                    <ul>
-                        <li><strong>IP Geolocation APIs:</strong> For location detection (data is not stored by us)</li>
-                        <li><strong>CDN Services:</strong> For faster content delivery (minimal logging)</li>
-                        <li><strong>Analytics:</strong> Anonymous usage statistics (no personal identification)</li>
-                    </ul>
-                </div>
-
-                <div class="content-section">
-                    <h3>Cookies and Local Storage</h3>
-                    <p>We use minimal cookies and local storage:</p>
-                    <ul>
-                        <li><strong>Theme Preference:</strong> Stores your dark/light mode choice locally</li>
-                        <li><strong>No Tracking Cookies:</strong> We do not use advertising or tracking cookies</li>
-                        <li><strong>No User Accounts:</strong> No registration required, no login cookies</li>
-                    </ul>
-                </div>
-
-                <div class="content-section">
-                    <h3>Your Rights</h3>
-                    <p>You have the following rights regarding your data:</p>
-                    <ul>
-                        <li><strong>Access:</strong> Request information about data we may have</li>
-                        <li><strong>Correction:</strong> Request correction of inaccurate data</li>
-                        <li><strong>Deletion:</strong> Request deletion of your data (where applicable)</li>
-                        <li><strong>Opt-out:</strong> Stop using the service at any time</li>
-                        <li><strong>Data Portability:</strong> Request your data in a portable format</li>
-                    </ul>
-                </div>
-
-                <div class="content-section">
-                    <h3>Security Measures</h3>
-                    <p>We implement appropriate technical and organizational security measures:</p>
-                    <ul>
-                        <li>HTTPS encryption for all data transmission</li>
-                        <li>Secure server infrastructure and regular updates</li>
-                        <li>Limited access to server logs and data</li>
-                        <li>Regular security monitoring and threat detection</li>
-                        <li>Incident response procedures for security breaches</li>
-                    </ul>
-                </div>
-
-                <div class="content-section">
-                    <h3>International Data Transfers</h3>
-                    <p>If you access our service from outside our server location, your data may be transferred internationally. We ensure appropriate safeguards are in place for such transfers in compliance with applicable privacy laws.</p>
-                </div>
-
-                <div class="content-section">
-                    <h3>Children's Privacy</h3>
-                    <p>Our service is not directed at children under 13. We do not knowingly collect personal information from children under 13. If we become aware of such collection, we will delete the information immediately.</p>
-                </div>
-
-                <div class="content-section">
-                    <h3>Changes to Privacy Policy</h3>
-                    <p>We may update this privacy policy periodically. Changes will be posted on this page with an updated "Last Modified" date. Continued use of the service after changes constitutes acceptance of the new policy.</p>
-                </div>
-
-                <div class="content-section">
-                    <h3>Contact Information</h3>
-                    <p>If you have questions about this privacy policy or our data practices, please contact us:</p>
-                    <div class="highlight-box">
-                        <p><strong>Email:</strong> jaihodigital@gmail.com<br>
-                        <strong>Response Time:</strong> We aim to respond within 72 hours</p>
-                    </div>
-                </div>
-            </div>
+            <p style="margin-top: 2rem; font-size: 0.9rem;"><em>Last Updated: December 2025</em></p>
         </main>
     </div>
-    
+
     <footer>
-        <div class="container footer-content">
-            <div class="footer-links">
-                <a href="faq.html"><i class="fas fa-question-circle"></i> FAQ</a>
-                <a href="privacy.html"><i class="fas fa-shield-alt"></i> Privacy</a>
-                <a href="contact.html"><i class="fas fa-envelope"></i> Contact</a>
-                <a href="https://github.com/jaihodigital" target="_blank"><i class="fab fa-github"></i> GitHub</a>
-            </div>
-            <p>What's My IP? &copy; 2025 | A simple tool to check your public IP address | Developed by 
-  <a 
-    href="https://jaihotechserve.onrender.com" 
-    target="_blank" 
-    style="
-      text-decoration: none;
-      display: inline-flex;
-      align-items: center;
-      gap: 5px;
-    "
-  >
-    <span style="
-      background-image: linear-gradient(to right, #6A82FB, #FC5C7D);
-      -webkit-background-clip: text;
-      -webkit-text-fill-color: transparent;
-      font-weight: bold;
-      transition: opacity 0.3s ease;
-    ">
-      Jaiho TechServe
-    </span>
-    <span style="
-      color: #FC5C7D;
-      font-size: 1.2rem;
-      transition: transform 0.3s ease;
-    ">
-      ↗
-    </span>
-  </a></p>
+        <div class="container">
+            <p>What's My IP? &copy; 2025 | Developed by Jaiho TechServe</p>
         </div>
     </footer>
 
     <script>
-        // Theme toggle functionality
         const themeToggle = document.getElementById('themeToggle');
-        
-        function toggleTheme() {
-            document.body.classList.toggle('dark-mode');
-            
-            if (document.body.classList.contains('dark-mode')) {
-                themeToggle.innerHTML = '<i class="fas fa-sun"></i>';
-                localStorage.setItem('theme', 'dark');
-            } else {
-                themeToggle.innerHTML = '<i class="fas fa-moon"></i>';
-                localStorage.setItem('theme', 'light');
-            }
-        }
-
         function initTheme() {
-            const savedTheme = localStorage.getItem('theme');
-            
-            if (savedTheme === 'dark') {
+            if (localStorage.getItem('theme') === 'dark') {
                 document.body.classList.add('dark-mode');
                 themeToggle.innerHTML = '<i class="fas fa-sun"></i>';
-            } else {
-                themeToggle.innerHTML = '<i class="fas fa-moon"></i>';
             }
         }
-
-        // Event listeners
-        themeToggle.addEventListener('click', toggleTheme);
-
-        // Initialize
-        document.addEventListener('DOMContentLoaded', () => {
-            initTheme();
-            
-            // Add fade-in animation to elements as they come into view
-            const observer = new IntersectionObserver((entries) => {
-                entries.forEach(entry => {
-                    if (entry.isIntersecting) {
-                        entry.target.classList.add('fade-in');
-                    }
-                });
-            }, { threshold: 0.1 });
-            
-            document.querySelectorAll('.content-card').forEach(section => {
-                observer.observe(section);
-            });
+        themeToggle.addEventListener('click', () => {
+            document.body.classList.toggle('dark-mode');
+            const isDark = document.body.classList.contains('dark-mode');
+            localStorage.setItem('theme', isDark ? 'dark' : 'light');
+            themeToggle.innerHTML = isDark ? '<i class="fas fa-sun"></i>' : '<i class="fas fa-moon"></i>';
         });
+        initTheme();
+        // Mobile menu toggle
+const hamburger = document.getElementById('hamburger');
+const nav = document.querySelector('.nav-links');
+
+hamburger.addEventListener('click', () => {
+    nav.classList.toggle('show');
+});
+
     </script>
 </body>
 </html>

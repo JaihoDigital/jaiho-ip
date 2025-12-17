@@ -4,743 +4,251 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Contact Us - What's My IP?</title>
+    <meta name="description" content="Contact Jaiho TechServe support.">
+    <link rel="icon" type="image/x-icon" href="/favicon.ico">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    
     <style>
+        /* CORE VARIABLES & RESET */
         :root {
             --primary-color: #4361ee;
             --primary-light: #4895ef;
             --secondary-color: #3f37c9;
-            --accent-color: #f72585;
-            --success-color: #4cc9f0;
             --text-color: #2b2d42;
             --text-light: #6c757d;
             --bg-color: #f8f9fa;
             --card-bg: #ffffff;
             --header-bg: rgba(255, 255, 255, 0.95);
             --shadow: 0 10px 30px rgba(0, 0, 0, 0.08);
-            --shadow-hover: 0 15px 35px rgba(0, 0, 0, 0.12);
-            --transition: all 0.3s ease;
             --border-radius: 16px;
             --gradient: linear-gradient(135deg, var(--primary-color) 0%, var(--secondary-color) 100%);
         }
-
         .dark-mode {
             --primary-color: #4cc9f0;
             --primary-light: #4895ef;
             --secondary-color: #560bad;
-            --accent-color: #f72585;
             --text-color: #f8f9fa;
             --text-light: #adb5bd;
             --bg-color: #121212;
             --card-bg: #1e1e1e;
             --header-bg: rgba(30, 30, 30, 0.95);
             --shadow: 0 10px 30px rgba(0, 0, 0, 0.3);
-            --shadow-hover: 0 15px 35px rgba(0, 0, 0, 0.4);
-            --gradient: linear-gradient(135deg, var(--primary-color) 0%, var(--secondary-color) 100%);
         }
-
-        * {
-            margin: 0;
-            padding: 0;
-            box-sizing: border-box;
-        }
-
+        * { margin: 0; padding: 0; box-sizing: border-box; }
         body {
             font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-            background-color: var(--bg-color);
-            color: var(--text-color);
-            line-height: 1.6;
-            transition: var(--transition);
-            min-height: 100vh;
-            display: flex;
-            flex-direction: column;
-            align-items: center;
-            padding: 0;
+            background-color: var(--bg-color); color: var(--text-color);
+            line-height: 1.6; min-height: 100vh; display: flex; flex-direction: column;
             background-image: 
                 radial-gradient(circle at 15% 50%, rgba(72, 149, 239, 0.03) 0%, transparent 25%),
                 radial-gradient(circle at 85% 30%, rgba(67, 97, 238, 0.03) 0%, transparent 25%);
         }
-
-        .dark-mode body {
-            background-image: 
-                radial-gradient(circle at 15% 50%, rgba(76, 201, 240, 0.05) 0%, transparent 25%),
-                radial-gradient(circle at 85% 30%, rgba(86, 11, 173, 0.05) 0%, transparent 25%);
-        }
-
-        .container {
-            width: 100%;
-            max-width: 900px;
-            margin: 0 auto;
-            padding: 0 1.5rem;
-        }
-
+        .container { width: 100%; max-width: 900px; margin: 0 auto; padding: 0 1.5rem; }
+        
         header {
-            background: var(--header-bg);
-            backdrop-filter: blur(10px);
-            -webkit-backdrop-filter: blur(10px);
-            position: sticky;
-            top: 0;
-            width: 100%;
-            z-index: 100;
-            padding: 1.2rem 0;
-            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.05);
-            margin-bottom: 2rem;
+            background: var(--header-bg); backdrop-filter: blur(10px);
+            position: sticky; top: 0; width: 100%; z-index: 100;
+            padding: 1.2rem 0; box-shadow: 0 2px 10px rgba(0, 0, 0, 0.05); margin-bottom: 2rem;
         }
+        .header-content { display: flex; justify-content: space-between; align-items: center; }
+        .logo { display: flex; align-items: center; gap: 0.75rem; }
+        .logo-icon { font-size: 1.8rem; color: var(--primary-color); }
+        h1 { font-size: 1.8rem; font-weight: 700; background: var(--gradient); -webkit-background-clip: text; -webkit-text-fill-color: transparent; }
+        .subtitle { font-size: 1rem; color: var(--text-light); }
 
-        .header-content {
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            flex-wrap: wrap;
-            gap: 1rem;
-        }
-
-        .logo {
-            display: flex;
-            align-items: center;
-            gap: 0.75rem;
-        }
-
-        .logo-icon {
-            font-size: 1.8rem;
-            color: var(--primary-color);
-        }
-
-        h1 {
-            font-size: 1.8rem;
-            font-weight: 700;
-            background: var(--gradient);
-            -webkit-background-clip: text;
-            -webkit-text-fill-color: transparent;
-            background-clip: text;
-        }
-
-        .subtitle {
-            font-size: 1rem;
-            color: var(--text-light);
-            margin-top: 0.25rem;
-        }
-
-        .nav-container {
-            display: flex;
-            align-items: center;
-            gap: 1rem;
-        }
-
-        .nav-links {
-            display: flex;
-            align-items: center;
-            gap: 0.5rem;
-            background: rgba(67, 97, 238, 0.05);
-            padding: 0.5rem;
-            border-radius: 50px;
-            border: 1px solid rgba(67, 97, 238, 0.1);
-        }
-
-        .dark-mode .nav-links {
-            background: rgba(76, 201, 240, 0.08);
-            border: 1px solid rgba(76, 201, 240, 0.15);
-        }
-
-        .nav-link {
-            display: flex;
-            align-items: center;
-            gap: 0.5rem;
-            padding: 0.6rem 1rem;
-            border-radius: 25px;
-            color: var(--text-color);
-            text-decoration: none;
-            font-weight: 500;
-            font-size: 0.9rem;
-            transition: var(--transition);
-        }
-
-        .nav-link:hover {
-            background: var(--gradient);
-            color: white;
-            transform: translateY(-2px);
-            box-shadow: 0 4px 12px rgba(67, 97, 238, 0.3);
-        }
-
-        .nav-link.active {
-            background: var(--gradient);
-            color: white;
-        }
-
-        .theme-toggle {
-            background: var(--card-bg);
-            border: none;
-            width: 48px;
-            height: 48px;
-            border-radius: 50%;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            cursor: pointer;
-            box-shadow: var(--shadow);
-            transition: var(--transition);
-            font-size: 1.2rem;
-            color: var(--text-color);
-        }
-
-        .theme-toggle:hover {
-            transform: translateY(-2px);
-            box-shadow: var(--shadow-hover);
-        }
-
-        .page-header {
-            text-align: center;
-            margin-bottom: 3rem;
-        }
-
-        .page-title {
-            font-size: 3rem;
-            font-weight: 800;
-            background: var(--gradient);
-            -webkit-background-clip: text;
-            -webkit-text-fill-color: transparent;
-            background-clip: text;
-            margin-bottom: 1rem;
-        }
-
-        .page-description {
-            font-size: 1.2rem;
-            color: var(--text-light);
-            max-width: 600px;
-            margin: 0 auto;
-        }
-
-        .back-button {
-            display: inline-flex;
-            align-items: center;
-            gap: 0.5rem;
-            background: var(--gradient);
-            color: white;
-            text-decoration: none;
-            padding: 0.9rem 1.5rem;
-            border-radius: 50px;
-            font-weight: 600;
-            transition: var(--transition);
-            box-shadow: 0 4px 15px rgba(67, 97, 238, 0.3);
-            margin-bottom: 2rem;
-        }
-
-        .back-button:hover {
-            transform: translateY(-3px);
-            box-shadow: 0 8px 20px rgba(67, 97, 238, 0.4);
-            color: white;
-        }
-
-        .contact-card {
-            background: var(--card-bg);
-            border-radius: var(--border-radius);
-            padding: 3rem;
-            box-shadow: var(--shadow);
-            margin-bottom: 2rem;
-            position: relative;
-            overflow: hidden;
-            transition: var(--transition);
-        }
-
-        .contact-card:hover {
-            box-shadow: var(--shadow-hover);
-            transform: translateY(-5px);
-        }
-
-        .contact-card::before {
-            content: '';
-            position: absolute;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 5px;
-            background: var(--gradient);
-        }
-
-        .section-title {
-            font-size: 1.8rem;
-            font-weight: 700;
-            color: var(--text-color);
-            margin-bottom: 1.5rem;
-            display: flex;
-            align-items: center;
-            gap: 0.75rem;
-        }
-
-        .section-title i {
-            color: var(--primary-color);
-        }
+        .nav-links { display: flex; gap: 0.5rem; background: rgba(67, 97, 238, 0.05); padding: 0.5rem; border-radius: 50px; border: 1px solid rgba(67, 97, 238, 0.1); }
+        .nav-link { display: flex; align-items: center; gap: 0.5rem; padding: 0.6rem 1rem; border-radius: 25px; color: var(--text-color); text-decoration: none; font-weight: 500; font-size: 0.9rem; transition: 0.3s; }
+        .nav-link:hover, .nav-link.active { background: var(--gradient); color: white; }
+        .theme-toggle { background: var(--card-bg); border: none; width: 40px; height: 40px; border-radius: 50%; display: flex; align-items: center; justify-content: center; cursor: pointer; box-shadow: var(--shadow); margin-left: 1rem; color: var(--text-color); }
 
         .contact-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-            gap: 2rem;
-            margin: 2rem 0;
+            display: grid; grid-template-columns: 1fr 1fr; gap: 2rem; margin-bottom: 3rem;
         }
-
-        .contact-item {
-            background: rgba(67, 97, 238, 0.05);
-            border: 1px solid rgba(67, 97, 238, 0.1);
-            border-radius: var(--border-radius);
-            padding: 2rem;
-            text-align: center;
-            transition: var(--transition);
+        .contact-card {
+            background: var(--card-bg); padding: 2.5rem; border-radius: var(--border-radius); box-shadow: var(--shadow);
+            display: flex; flex-direction: column; justify-content: center;
         }
-
-        .dark-mode .contact-item {
-            background: rgba(76, 201, 240, 0.08);
-            border: 1px solid rgba(76, 201, 240, 0.15);
-        }
-
-        .contact-item:hover {
-            transform: translateY(-5px);
-            box-shadow: var(--shadow);
-        }
-
-        .contact-icon {
-            width: 80px;
-            height: 80px;
-            background: var(--gradient);
-            border-radius: 50%;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            margin: 0 auto 1.5rem;
-            font-size: 2rem;
-            color: white;
-        }
-
-        .contact-title {
-            font-size: 1.3rem;
-            font-weight: 600;
-            color: var(--text-color);
-            margin-bottom: 1rem;
-        }
-
-        .contact-info {
-            color: var(--text-light);
-            line-height: 1.6;
-            margin-bottom: 1.5rem;
-        }
-
-        .contact-link {
-            display: inline-flex;
-            align-items: center;
-            gap: 0.5rem;
-            background: var(--gradient);
-            color: white;
-            text-decoration: none;
-            padding: 0.8rem 1.5rem;
-            border-radius: 50px;
-            font-weight: 600;
-            transition: var(--transition);
-            box-shadow: 0 4px 15px rgba(67, 97, 238, 0.3);
-        }
-
-        .contact-link:hover {
-            transform: translateY(-3px);
-            box-shadow: 0 8px 20px rgba(67, 97, 238, 0.4);
-            color: white;
-        }
-
-        .contact-link.email {
-            background: #34495e;
-        }
-
-        .contact-link.email:hover {
-            background: #2c3e50;
-            box-shadow: 0 8px 20px rgba(52, 73, 94, 0.4);
-        }
-
-        .company-section {
-            background: rgba(76, 201, 240, 0.05);
-            border-radius: var(--border-radius);
-            padding: 2.5rem;
-            margin: 2rem 0;
-            text-align: center;
-        }
-
-        .dark-mode .company-section {
-            background: rgba(76, 201, 240, 0.08);
-        }
-
-        .company-section h3 {
-            color: var(--text-color);
-            margin-bottom: 1rem;
-            font-size: 1.5rem;
-        }
-
-        .company-section p {
-            color: var(--text-light);
-            line-height: 1.7;
-            margin-bottom: 1.5rem;
-        }
-
-        .company-links {
-            display: flex;
-            justify-content: center;
-            gap: 1rem;
-            flex-wrap: wrap;
-        }
-
-        .company-link {
-            display: inline-flex;
-            align-items: center;
-            gap: 0.5rem;
-            background: var(--gradient);
-            color: white;
-            text-decoration: none;
-            padding: 1rem 1.5rem;
-            border-radius: 50px;
-            font-weight: 600;
-            transition: var(--transition);
-            box-shadow: 0 4px 15px rgba(67, 97, 238, 0.3);
-        }
-
-        .company-link:hover {
-            transform: translateY(-3px);
-            box-shadow: 0 8px 20px rgba(67, 97, 238, 0.4);
-            color: white;
-        }
-
-        .response-time {
-            background: rgba(40, 167, 69, 0.1);
-            border: 1px solid rgba(40, 167, 69, 0.2);
-            border-radius: 12px;
-            padding: 1.5rem;
-            margin: 2rem 0;
-            text-align: center;
-        }
-
-        .response-time i {
-            color: #28a745;
-            font-size: 1.5rem;
-            margin-bottom: 0.5rem;
-        }
-
-        .response-time h4 {
-            color: var(--text-color);
-            margin-bottom: 0.5rem;
-        }
-
-        .response-time p {
-            color: var(--text-light);
-            font-size: 0.95rem;
-        }
-
-        footer {
-            margin-top: auto;
-            text-align: center;
-            padding: 2rem 0;
-            width: 100%;
-            color: var(--text-light);
-            font-size: 0.9rem;
-        }
-
-        .footer-content {
-            display: flex;
-            flex-direction: column;
-            gap: 1rem;
-        }
-
-        .footer-links {
-            display: flex;
-            justify-content: center;
-            gap: 1.5rem;
-            flex-wrap: wrap;
-        }
-
-        .footer-links a {
-            color: var(--text-light);
-            text-decoration: none;
-            transition: var(--transition);
-        }
-
-        .footer-links a:hover {
+        .info-item { margin-bottom: 1.5rem; }
+        .info-label { font-size: 0.9rem; color: var(--text-light); font-weight: 600; text-transform: uppercase; letter-spacing: 0.5px; margin-bottom: 0.3rem; }
+        .info-value { font-size: 1.1rem; color: var(--text-color); font-weight: 500; }
+        
+        /* Link styling inside cards */
+        .info-value a {
             color: var(--primary-color);
+            text-decoration: none;
+            transition: color 0.3s ease;
+            border-bottom: 1px solid transparent;
+        }
+        .info-value a:hover {
+            color: var(--secondary-color);
+            border-bottom: 1px solid var(--secondary-color);
         }
 
-        @media (max-width: 768px) {
-            .nav-links {
-                display: none;
-            }
-            
-            .page-title {
-                font-size: 2.2rem;
-            }
-            
-            .contact-card {
-                padding: 2rem;
-            }
-            
-            .contact-grid {
-                grid-template-columns: 1fr;
-            }
-            
-            .company-links {
-                flex-direction: column;
-                align-items: center;
-            }
-            
-            .company-link {
-                width: 250px;
-                justify-content: center;
-            }
+        .contact-btn {
+            display: inline-block; background: var(--gradient); color: white; text-decoration: none; padding: 1rem 2rem;
+            border-radius: 50px; font-weight: 600; text-align: center; margin-top: 1rem;
+            box-shadow: 0 4px 15px rgba(67, 97, 238, 0.3); transition: 0.3s;
+        }
+        .contact-btn:hover { transform: translateY(-3px); box-shadow: 0 8px 20px rgba(67, 97, 238, 0.4); color: white; }
+
+        .company-badge {
+            display: inline-block; background: rgba(67, 97, 238, 0.1); color: var(--primary-color);
+            padding: 0.2rem 0.6rem; border-radius: 4px; font-size: 0.8rem; font-weight: bold; margin-left: 0.5rem;
         }
 
-        .fade-in {
-            animation: fadeIn 0.5s ease-in-out;
-        }
+        footer { margin-top: auto; text-align: center; padding: 2rem 0; color: var(--text-light); font-size: 0.9rem; }
+        
+        @media (max-width: 768px) { .nav-links { display: none; } .contact-grid { grid-template-columns: 1fr; } }
+    /* Hamburger button */
+.hamburger {
+    display: none;
+    background: var(--card-bg);
+    border: none;
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+    cursor: pointer;
+    box-shadow: var(--shadow);
+    color: var(--text-color);
+}
 
-        @keyframes fadeIn {
-            from { opacity: 0; transform: translateY(10px); }
-            to { opacity: 1; transform: translateY(0); }
-        }
+/* Mobile only */
+@media (max-width: 768px) {
+    .hamburger {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+    }
+
+    .nav-links {
+        display: none;
+        position: absolute;
+        top: 80px;
+        right: 20px;
+        background: var(--card-bg);
+        flex-direction: column;
+        padding: 1rem;
+        border-radius: 16px;
+        box-shadow: var(--shadow);
+        width: 200px;
+    }
+
+    .nav-links.show {
+        display: flex;
+    }
+}
+
     </style>
 </head>
 <body>
     <header>
         <div class="container header-content">
             <div class="logo">
-                <div class="logo-icon"><i class="fas fa-network-wired"></i></div>
+                <div class="logo-icon"><i class="fas fa-envelope-open-text"></i></div>
                 <div>
                     <h1>What's My IP?</h1>
-                    <p class="subtitle">Contact Information</p>
+                    <p class="subtitle">Get in Touch</p>
                 </div>
             </div>
-            
-            <div class="nav-container">
+            <div style="display: flex; align-items: center;">
                 <nav class="nav-links">
-                    <a href="index.html" class="nav-link">
-                        <i class="fas fa-home"></i> Home
-                    </a>
-                    <a href="faq.html" class="nav-link">
-                        <i class="fas fa-question-circle"></i> FAQ
-                    </a>
-                    <a href="privacy.html" class="nav-link">
-                        <i class="fas fa-shield-alt"></i> Privacy
-                    </a>
-                    <a href="api_docs.html" class="nav-link">
-                        <i class="fas fa-code"></i> API
-                    </a>
-                    <a href="donate.html" class="nav-link">
-                        <i class="fas fa-heart"></i> Donate
-                    </a>
-                    <a href="contact.html" class="nav-link active">
-                        <i class="fas fa-envelope"></i> Contact
-                    </a>
+                    <a href="index.html" class="nav-link"><i class="fas fa-home"></i> Home</a>
+                    <a href="faq.html" class="nav-link"><i class="fas fa-question-circle"></i> FAQ</a>
+                    <a href="privacy.html" class="nav-link"><i class="fas fa-shield-alt"></i> Privacy</a>
+                    <a href="api_docs.html" class="nav-link"><i class="fas fa-code"></i> API</a>
+                    <a href="contact.html" class="nav-link active"><i class="fas fa-envelope"></i> Contact</a>
                 </nav>
-                
-                <button class="theme-toggle" id="themeToggle">
-                    <i class="fas fa-moon"></i>
-                </button>
+                <button class="hamburger" id="hamburger">
+    <i class="fas fa-bars"></i>
+</button>
+
+                <button class="theme-toggle" id="themeToggle"><i class="fas fa-moon"></i></button>
             </div>
         </div>
     </header>
-    
+
     <div class="container">
-        <main>
-            <div class="page-header fade-in">
-                <h1 class="page-title">Contact Us</h1>
-                <p class="page-description">Get in touch with our team for support, feedback, or business inquiries</p>
-            </div>
-
-            <a href="index.html" class="back-button">
-                <i class="fas fa-arrow-left"></i> Back to Home
-            </a>
-
-            <div class="contact-card fade-in">
-                <h2 class="section-title">
-                    <i class="fas fa-phone-alt"></i>
-                    Get in Touch
-                </h2>
+        <main class="contact-grid">
+            <div class="contact-card">
+                <h2 style="margin-bottom: 1.5rem; color: var(--primary-color);"><i class="fas fa-building"></i> Company Details</h2>
                 
-                <div class="contact-grid">
-                    <!-- Email Support -->
-                    <div class="contact-item">
-                        <div class="contact-icon">
-                            <i class="fas fa-envelope"></i>
-                        </div>
-                        <h3 class="contact-title">Email Support</h3>
-                        <div class="contact-info">
-                            For general inquiries, technical support, API questions, or feedback about our service.
-                        </div>
-                        <a href="mailto:jaihodigital@gmail.com" class="contact-link email">
-                            <i class="fas fa-paper-plane"></i> jaihodigital@gmail.com
-                        </a>
-                    </div>
-
-                    <!-- Business Inquiries -->
-                    <div class="contact-item">
-                        <div class="contact-icon">
-                            <i class="fas fa-briefcase"></i>
-                        </div>
-                        <h3 class="contact-title">Business Inquiries</h3>
-                        <div class="contact-info">
-                            For partnership opportunities, business collaborations, or enterprise solutions.
-                        </div>
-                        <a href="mailto:jaihodigital@gmail.com" class="contact-link">
-                            <i class="fas fa-handshake"></i> jaihodigital@gmail.com
-                        </a>
-                    </div>
-
-                    <!-- Technical Issues -->
-                    <div class="contact-item">
-                        <div class="contact-icon">
-                            <i class="fas fa-tools"></i>
-                        </div>
-                        <h3 class="contact-title">Technical Issues</h3>
-                        <div class="contact-info">
-                            Report bugs, API issues, or request technical assistance with our services.
-                        </div>
-                        <a href="mailto:jaihodigital@gmail.com" class="contact-link">
-                            <i class="fas fa-bug"></i> jaihodigital@gmail.com
-                        </a>
+                <div class="info-item">
+                    <div class="info-label">Developed By</div>
+                    <div class="info-value">
+                        <a href="https://jaihotechserve.onrender.com" target="_blank">Jaiho TechServe</a> 
+                        <span class="company-badge">Dev Team</span>
                     </div>
                 </div>
 
-                <div class="response-time">
-                    <i class="fas fa-clock"></i>
-                    <h4>Response Time</h4>
-                    <p>We typically respond to all inquiries within 24-72 hours during business days</p>
+                <div class="info-item">
+                    <div class="info-label">Parent Company</div>
+                    <div class="info-value">
+                        <a href="https://jaiho-digital.onrender.com" target="_blank">Jaiho Digital</a>
+                    </div>
+                </div>
+
+                <div class="info-item">
+                    <div class="info-label">Service Status</div>
+                    <div class="info-value" style="color: #4cc9f0; font-weight: 600;"><i class="fas fa-check-circle"></i> Operational</div>
+                </div>
+
+                <div class="info-item">
+                    <div class="info-label">Response Time</div>
+                    <div class="info-value" style="font-size: 1rem; line-height: 1.4;">
+                        We typically respond to all inquiries within 24-48 hours during business days
+                    </div>
                 </div>
             </div>
 
-            <div class="company-section fade-in">
-                <h3><i class="fas fa-building"></i> Our Company</h3>
-                <p>What's My IP? is developed and maintained by our dedicated team of developers and network engineers committed to providing reliable IP detection services.</p>
+            <div class="contact-card">
+                <h2 style="margin-bottom: 1rem; color: var(--primary-color);"><i class="fas fa-info-circle"></i> About Our Service</h2>
+                <p style="color: var(--text-light); margin-bottom: 1.5rem;">
+                    We are dedicated to providing simple, fast, and privacy-focused network utilities. Whether you are checking your VPN connection, debugging a network issue, or integrating our API, we are here to help.
+                </p>
                 
-                <div class="company-links">
-                    <a href="https://jaihotechserve.onrender.com" class="company-link" target="_blank">
-                        <i class="fas fa-globe"></i> Our Company Website
-                    </a>
-                    <a href="https://jaiho-digital.onrender.com" class="company-link" target="_blank">
-                        <i class="fas fa-building"></i> Parent Company
-                    </a>
-                </div>
-            </div>
-
-            <div class="contact-card fade-in">
-                <h2 class="section-title">
-                    <i class="fas fa-info-circle"></i>
-                    About Our Service
-                </h2>
-                
-                <div style="text-align: center; color: var(--text-light); line-height: 1.7;">
-                    <p style="margin-bottom: 1.5rem;">
-                        What's My IP? has been serving users worldwide since 2025, providing fast, accurate, and free IP address detection services. We're committed to privacy, reliability, and user experience.
-                    </p>
-                    
-                    <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 1.5rem; margin: 2rem 0;">
-                        <div style="background: rgba(67, 97, 238, 0.05); padding: 1.5rem; border-radius: 12px;">
-                            <i class="fas fa-users" style="color: var(--primary-color); font-size: 2rem; margin-bottom: 0.5rem;"></i>
-                            <h4 style="color: var(--text-color); margin-bottom: 0.5rem;">10M+ Users</h4>
-                            <p style="font-size: 0.9rem;">Trusted by millions worldwide</p>
-                        </div>
-                        
-                        <div style="background: rgba(67, 97, 238, 0.05); padding: 1.5rem; border-radius: 12px;">
-                            <i class="fas fa-server" style="color: var(--primary-color); font-size: 2rem; margin-bottom: 0.5rem;"></i>
-                            <h4 style="color: var(--text-color); margin-bottom: 0.5rem;">99.9% Uptime</h4>
-                            <p style="font-size: 0.9rem;">Reliable service availability</p>
-                        </div>
-                        
-                        <div style="background: rgba(67, 97, 238, 0.05); padding: 1.5rem; border-radius: 12px;">
-                            <i class="fas fa-shield-alt" style="color: var(--primary-color); font-size: 2rem; margin-bottom: 0.5rem;"></i>
-                            <h4 style="color: var(--text-color); margin-bottom: 0.5rem;">Privacy First</h4>
-                            <p style="font-size: 0.9rem;">No tracking or data storage</p>
-                        </div>
+                <div class="info-item">
+                    <div class="info-label">Email Support</div>
+                    <div class="info-value">
+                        <a href="mailto:jaihodigital@gmail.com">jaihodigital@gmail.com</a>
                     </div>
                 </div>
+
+                <a href="mailto:jaihodigital@gmail.com" class="contact-btn">
+                    <i class="fas fa-paper-plane"></i> Send an Email
+                </a>
             </div>
         </main>
     </div>
-    
+
     <footer>
-        <div class="container footer-content">
-            <div class="footer-links">
-                <a href="faq.html"><i class="fas fa-question-circle"></i> FAQ</a>
-                <a href="privacy.html"><i class="fas fa-shield-alt"></i> Privacy</a>
-                <a href="contact.html"><i class="fas fa-envelope"></i> Contact</a>
-                <a href="https://github.com/jaihodigital" target="_blank"><i class="fab fa-github"></i> GitHub</a>
-            </div>
-            <p>What's My IP? &copy; 2025 | A simple tool to check your public IP address | Developed by 
-  <a 
-    href="https://jaihotechserve.onrender.com" 
-    target="_blank" 
-    style="
-      text-decoration: none;
-      display: inline-flex;
-      align-items: center;
-      gap: 5px;
-    "
-  >
-    <span style="
-      background-image: linear-gradient(to right, #6A82FB, #FC5C7D);
-      -webkit-background-clip: text;
-      -webkit-text-fill-color: transparent;
-      font-weight: bold;
-      transition: opacity 0.3s ease;
-    ">
-      Jaiho TechServe
-    </span>
-    <span style="
-      color: #FC5C7D;
-      font-size: 1.2rem;
-      transition: transform 0.3s ease;
-    ">
-      ↗
-    </span>
-  </a></p>
+        <div class="container">
+            <p>What's My IP? &copy; 2025 | Developed by Jaiho TechServe</p>
         </div>
     </footer>
 
     <script>
-        // Theme toggle functionality
         const themeToggle = document.getElementById('themeToggle');
-        
-        function toggleTheme() {
-            document.body.classList.toggle('dark-mode');
-            
-            if (document.body.classList.contains('dark-mode')) {
-                themeToggle.innerHTML = '<i class="fas fa-sun"></i>';
-                localStorage.setItem('theme', 'dark');
-            } else {
-                themeToggle.innerHTML = '<i class="fas fa-moon"></i>';
-                localStorage.setItem('theme', 'light');
-            }
-        }
-
         function initTheme() {
-            const savedTheme = localStorage.getItem('theme');
-            
-            if (savedTheme === 'dark') {
+            if (localStorage.getItem('theme') === 'dark') {
                 document.body.classList.add('dark-mode');
                 themeToggle.innerHTML = '<i class="fas fa-sun"></i>';
-            } else {
-                themeToggle.innerHTML = '<i class="fas fa-moon"></i>';
             }
         }
-
-        // Event listeners
-        themeToggle.addEventListener('click', toggleTheme);
-
-        // Initialize
-        document.addEventListener('DOMContentLoaded', () => {
-            initTheme();
-            
-            // Add fade-in animation to elements as they come into view
-            const observer = new IntersectionObserver((entries) => {
-                entries.forEach(entry => {
-                    if (entry.isIntersecting) {
-                        entry.target.classList.add('fade-in');
-                    }
-                });
-            }, { threshold: 0.1 });
-            
-            document.querySelectorAll('.contact-card, .company-section').forEach(section => {
-                observer.observe(section);
-            });
+        themeToggle.addEventListener('click', () => {
+            document.body.classList.toggle('dark-mode');
+            const isDark = document.body.classList.contains('dark-mode');
+            localStorage.setItem('theme', isDark ? 'dark' : 'light');
+            themeToggle.innerHTML = isDark ? '<i class="fas fa-sun"></i>' : '<i class="fas fa-moon"></i>';
         });
+        initTheme();
+        // Mobile menu toggle
+const hamburger = document.getElementById('hamburger');
+const nav = document.querySelector('.nav-links');
+
+hamburger.addEventListener('click', () => {
+    nav.classList.toggle('show');
+});
+
     </script>
 </body>
 </html>
