@@ -12,10 +12,8 @@
 <meta name="language" content="English">
 <meta name="revisit-after" content="7 days">
 
-<!-- Canonical URL -->
 <link rel="canonical" href="https://jaiho-ip.vercel.app/">
 
-<!-- Open Graph / Facebook -->
 <meta property="og:type" content="website">
 <meta property="og:url" content="https://jaiho-ip.vercel.app/">
 <meta property="og:title" content="What's My IP Address? - Free IP Address Checker Tool">
@@ -26,7 +24,6 @@
 <meta property="og:site_name" content="What's My IP?">
 <meta property="og:locale" content="en_US">
 
-<!-- Twitter Card -->
 <meta name="twitter:card" content="summary_large_image">
 <meta name="twitter:url" content="https://jaiho-ip.vercel.app/">
 <meta name="twitter:title" content="What's My IP Address? - Free IP Address Checker Tool">
@@ -34,21 +31,18 @@
 <meta name="twitter:image" content="https://jaiho-ip.vercel.app/images/favicon.jpeg">
 <meta name="twitter:creator" content="@arshvir3972">
 
-<!-- Additional Meta Tags -->
 <meta name="theme-color" content="#4361ee">
 <meta name="msapplication-TileColor" content="#4361ee">
 <meta name="apple-mobile-web-app-capable" content="yes">
 <meta name="apple-mobile-web-app-status-bar-style" content="default">
 <meta name="apple-mobile-web-app-title" content="What's My IP?">
 
-<!-- Favicon -->
 <link rel="icon" type="image/x-icon" href="/favicon.ico">
 <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png">
 <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png">
 <link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png">
 <link rel="manifest" href="/site.webmanifest">
 
-<!-- Structured Data (JSON-LD) -->
 <script type="application/ld+json">
 {
   "@context": "https://schema.org",
@@ -85,41 +79,6 @@
 }
 </script>
 
-<!-- Additional Structured Data for FAQ -->
-<script type="application/ld+json">
-{
-  "@context": "https://schema.org",
-  "@type": "FAQPage",
-  "mainEntity": [
-    {
-      "@type": "Question",
-      "name": "What is an IP address?",
-      "acceptedAnswer": {
-        "@type": "Answer",
-        "text": "An IP address is a unique numerical identifier assigned to every device connected to the internet. It serves as your digital address that allows other devices and websites to communicate with you."
-      }
-    },
-    {
-      "@type": "Question", 
-      "name": "Is it safe to check my IP address?",
-      "acceptedAnswer": {
-        "@type": "Answer",
-        "text": "Yes, checking your IP address is completely safe. Your IP address is already visible to every website you visit. Our tool simply displays this publicly available information."
-      }
-    },
-    {
-      "@type": "Question",
-      "name": "Is this service free?",
-      "acceptedAnswer": {
-        "@type": "Answer",
-        "text": "Yes, What's My IP? is completely free to use with no registration required. We also provide a free API for developers with reasonable rate limits."
-      }
-    }
-  ]
-}
-</script>
-
-<!-- Preconnect for Performance -->
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://cdnjs.cloudflare.com">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
@@ -774,7 +733,6 @@
             </div>
             
             <div class="nav-container">
-                <!-- Desktop Navigation -->
                 <nav class="nav-links">
                     <a href="index.html" class="nav-link active">
                         <i class="fas fa-home"></i> Home
@@ -800,7 +758,6 @@
                     </a>
                 </nav>
                 
-                <!-- Mobile Navigation Toggle -->
                 <button class="mobile-nav-toggle" id="mobileNavToggle">
                     <i class="fas fa-bars"></i>
                 </button>
@@ -810,7 +767,6 @@
                 </button>
             </div>
             
-            <!-- Mobile Navigation Menu -->
             <nav class="mobile-nav" id="mobileNav">
                 <a href="index.html" class="nav-link active">
                     <i class="fas fa-home"></i> Home
@@ -881,10 +837,10 @@
                 <h3><i class="fas fa-code"></i> API Access</h3>
                 <p>Developers can access this information programmatically using our JSON API:</p>
                 <code>
-                    <span class="endpoint">GET</span> /api/myip<br>
-                    <span class="endpoint">Response:</span> {"ip": "192.168.1.1", "city": "New York", "region": "New York", "country": "US", "org": "ISP Name"}
+                    <span class="endpoint">GET</span> /api/json<br>
+                    <span class="endpoint">Response:</span> {"ip": "192.168.1.1", "location": {"city": "New York", "country": "US"}}
                 </code>
-                <p>Rate limiting: 100 requests per hour per IP address</p>
+                <a href="api_docs.html" class="btn btn-secondary" style="margin-top: 10px; display: inline-block;">View Full Documentation</a>
             </div>
             
             <div class="support-section fade-in">
@@ -1011,8 +967,9 @@
             locationElement.textContent = 'Detecting...';
             ispElement.textContent = 'Detecting...';
             
-            // Try multiple IP APIs with fallbacks
+            // Try your OWN API first, then fallbacks
             const apiEndpoints = [
+                '/api/json', // Your new local API
                 'https://ipapi.co/json/',
                 'https://api.ipify.org?format=json',
                 'https://api.myip.com',
@@ -1026,6 +983,7 @@
                     const response = await fetch(endpoint);
                     if (response.ok) {
                         data = await response.json();
+                        console.log("Success with: " + endpoint);
                         break;
                     }
                 } catch (error) {
@@ -1041,18 +999,20 @@
                         ipAddressElement.textContent = data.ip;
                     }
                     
-                    if (data.city && data.region && data.country_name) {
+                    // Handle location (works for your API and ipapi)
+                    if (data.location && data.location.city) {
+                         locationElement.textContent = `${data.location.city}, ${data.location.region || ''}, ${data.location.country || ''}`;
+                    } else if (data.city && data.region && data.country_name) {
                         locationElement.textContent = `${data.city}, ${data.region}, ${data.country_name}`;
                     } else if (data.country) {
                         locationElement.textContent = data.country;
                     }
                     
+                    // Handle ISP
                     if (data.org) {
                         ispElement.textContent = data.org;
                     } else if (data.isp) {
                         ispElement.textContent = data.isp;
-                    } else if (data.asn && data.asn.name) {
-                        ispElement.textContent = data.asn.name;
                     } else {
                         ispElement.textContent = 'Unknown ISP';
                     }
