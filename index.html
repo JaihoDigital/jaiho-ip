@@ -994,29 +994,34 @@
             
             try {
                 if (data) {
-                    // Process data based on API response structure
-                    if (data.ip) {
-                        ipAddressElement.textContent = data.ip;
-                    }
-                    
-                    // Handle location (works for your API and ipapi)
-                    if (data.location && data.location.city) {
-                         locationElement.textContent = `${data.location.city}, ${data.location.region || ''}, ${data.location.country || ''}`;
-                    } else if (data.city && data.region && data.country_name) {
-                        locationElement.textContent = `${data.city}, ${data.region}, ${data.country_name}`;
-                    } else if (data.country) {
-                        locationElement.textContent = data.country;
-                    }
-                    
-                    // Handle ISP
-                    if (data.org) {
-                        ispElement.textContent = data.org;
-                    } else if (data.isp) {
-                        ispElement.textContent = data.isp;
-                    } else {
-                        ispElement.textContent = 'Unknown ISP';
-                    }
-                } else {
+    // 1. IP
+    if (data.ip) ipAddressElement.textContent = data.ip;
+
+    // 2. Location (Support your new API structure + fallbacks)
+    if (data.location && data.location.city) {
+         locationElement.textContent = `${data.location.city}, ${data.location.region || ''}, ${data.location.country || ''}`;
+    } else if (data.city) {
+         locationElement.textContent = `${data.city}, ${data.region || ''}, ${data.country || ''}`;
+    }
+
+    // 3. ISP (Support your new API structure + fallbacks)
+    if (data.isp && data.isp.name) {
+        ispElement.textContent = data.isp.name; // Uses your new API format
+    } else if (data.org) {
+        ispElement.textContent = data.org;
+    } else if (data.isp) {
+        ispElement.textContent = data.isp; // Fallback for other APIs
+    }
+
+    // 4. Browser & OS (Use API data if available, otherwise local detection)
+    if (data.client) {
+        browserElement.textContent = data.client.browser;
+        osElement.textContent = data.client.os;
+    } else {
+        browserElement.textContent = detectBrowser();
+        osElement.textContent = detectOS();
+    }
+} else {
                     throw new Error('All APIs failed');
                 }
             } catch (error) {
